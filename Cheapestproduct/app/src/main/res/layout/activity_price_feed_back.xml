@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PriceFeedBack">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+
+
+        >
+    </android.support.v7.widget.Toolbar>
+
+    <TextView android:id="@+id/txtFeedBackBarcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:text="國際條碼："/>
+
+    <TextView android:id="@+id/txtShowBarcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        app:layout_constraintLeft_toRightOf="@id/txtFeedBackBarcode"
+        app:layout_constraintTop_toTopOf="@id/txtFeedBackBarcode"
+        android:text=""/>
+
+    <TextView android:id="@+id/txtFeedBackName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22dp"
+        android:text="商品名稱："
+        app:layout_constraintTop_toBottomOf="@id/txtFeedBackBarcode"
+        />
+
+    <TextView android:id="@+id/txtShowName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22dp"
+        android:text=""
+        app:layout_constraintLeft_toRightOf="@id/txtFeedBackName"
+        app:layout_constraintTop_toBottomOf="@id/txtFeedBackBarcode"
+        />
+
+    <TextView android:id="@+id/txtFeedBackStore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22dp"
+        android:text="通路名稱："
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/txtFeedBackName"
+        app:layout_constraintRight_toLeftOf="@id/spnList"
+        />
+
+    <Spinner android:id="@+id/spnList"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/txtFeedBackStore"
+        app:layout_constraintLeft_toRightOf="@id/txtFeedBackStore"
+        >
+    </Spinner>
+
+
+    <TextView android:id="@+id/txtFeedBackPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="22dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintHorizontal_weight="0.45"
+        app:layout_constraintTop_toBottomOf="@id/spnList"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/edtFeedBackPrice"
+        android:text="價格"
+        />
+
+    <EditText android:id="@+id/edtFeedBackPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_weight="1"
+        android:inputType="number"
+        app:layout_constraintTop_toTopOf="@id/txtFeedBackPrice"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/txtFeedBackPrice"/>
+
+
+    <TextView android:id="@+id/txtFeedBackRemark"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="22dp"
+        app:layout_constraintTop_toBottomOf="@id/edtFeedBackPrice"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/edtFeedBackPrice"
+        android:text="活動備註"
+        />
+
+    <EditText android:id="@+id/edtFeedBackRemark"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/txtFeedBackRemark"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/txtFeedBackPrice"/>
+
+
+    <Button android:id="@+id/btnSendPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="送出"
+        app:layout_constraintTop_toBottomOf="@id/edtFeedBackRemark"/>
+
+
+</android.support.constraint.ConstraintLayout>

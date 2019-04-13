@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="?android:attr/selectableItemBackground">
+
+        <TextView android:id="@+id/txtStoreName"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text=""/>
+
+        <TextView android:id="@+id/txtPrice"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text=""/>
+
+        <TextView android:id="@+id/txtRemark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text=""/>
+
+    <!--
+        <TextView android:id="@+id/txtUpdDate"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text=""/>
+            -->
+
+</LinearLayout>
