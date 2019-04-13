@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="CheapProductsEntities-Web.config Connection String" description="CheapProductsEntities 應用程式在 web.config 中用來存取資料庫的連接字串。" defaultValue="metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=LAPTOP-S65GSBOL\SQLEXPRESS;initial catalog=CheapProducts;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\user\\source\\repos\\CheapestProductApi\\CheapestProductApi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='CheapProductsEntities']/@connectionString" />
+  </parameter>
+</parameters>

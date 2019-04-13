@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CheapProductsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="area">
+          <Key>
+            <PropertyRef Name="area_id" />
+          </Key>
+          <Property Name="area_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="area_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="goodstype">
+          <Key>
+            <PropertyRef Name="goods_type" />
+          </Key>
+          <Property Name="goods_type" Type="int" Nullable="false" />
+          <Property Name="type_name" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="levels">
+          <Key>
+            <PropertyRef Name="level_type" />
+          </Key>
+          <Property Name="level_type" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="level_name" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="price">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="barcode" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="price" Type="float" />
+          <Property Name="update_date" Type="datetime" />
+          <Property Name="store_id" Type="int" />
+          <Property Name="area_id" Type="int" />
+          <Property Name="verify" Type="char" MaxLength="1" />
+          <Property Name="user_id" Type="varchar" MaxLength="15" />
+          <Property Name="remark" Type="text" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="barcode" />
+          </Key>
+          <Property Name="barcode" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="goods_name" Type="varchar" MaxLength="300" />
+          <Property Name="goods_img" Type="image" />
+          <Property Name="goods_description" Type="text" />
+          <Property Name="favorite" Type="char" MaxLength="1" />
+          <Property Name="goods_type" Type="int" />
+        </EntityType>
+        <EntityType Name="store">
+          <Key>
+            <PropertyRef Name="store_id" />
+          </Key>
+          <Property Name="store_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="store_name" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="user_name" Type="varchar" MaxLength="50" />
+          <Property Name="phone_no" Type="int" />
+          <Property Name="level_type" Type="char" MaxLength="1" />
+          <Property Name="verify" Type="char" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK_price_area">
+          <End Role="area" Type="Self.area" Multiplicity="0..1" />
+          <End Role="price" Type="Self.price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="area">
+              <PropertyRef Name="area_id" />
+            </Principal>
+            <Dependent Role="price">
+              <PropertyRef Name="area_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_price_products">
+          <End Role="products" Type="Self.products" Multiplicity="1" />
+          <End Role="price" Type="Self.price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="barcode" />
+            </Principal>
+            <Dependent Role="price">
+              <PropertyRef Name="barcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_price_store">
+          <End Role="store" Type="Self.store" Multiplicity="0..1" />
+          <End Role="price" Type="Self.price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="store">
+              <PropertyRef Name="store_id" />
+            </Principal>
+            <Dependent Role="price">
+              <PropertyRef Name="store_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_goodstype">
+          <End Role="goodstype" Type="Self.goodstype" Multiplicity="0..1" />
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goodstype">
+              <PropertyRef Name="goods_type" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="goods_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CheapProductsModelStoreContainer">
+          <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="goodstype" EntityType="Self.goodstype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="levels" EntityType="Self.levels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="price" EntityType="Self.price" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="store" EntityType="Self.store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_price_area" Association="Self.FK_price_area">
+            <End Role="area" EntitySet="area" />
+            <End Role="price" EntitySet="price" />
+          </AssociationSet>
+          <AssociationSet Name="FK_price_products" Association="Self.FK_price_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="price" EntitySet="price" />
+          </AssociationSet>
+          <AssociationSet Name="FK_price_store" Association="Self.FK_price_store">
+            <End Role="store" EntitySet="store" />
+            <End Role="price" EntitySet="price" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_goodstype" Association="Self.FK_products_goodstype">
+            <End Role="goodstype" EntitySet="goodstype" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CheapProductsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CheapProductsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="area" EntityType="CheapProductsModel.area" />
+          <EntitySet Name="goodstype" EntityType="CheapProductsModel.goodstype" />
+          <EntitySet Name="levels" EntityType="CheapProductsModel.levels" />
+          <EntitySet Name="price" EntityType="CheapProductsModel.price" />
+          <EntitySet Name="products" EntityType="CheapProductsModel.products" />
+          <EntitySet Name="store" EntityType="CheapProductsModel.store" />
+          <EntitySet Name="users" EntityType="CheapProductsModel.users" />
+          <AssociationSet Name="FK_price_area" Association="CheapProductsModel.FK_price_area">
+            <End Role="area" EntitySet="area" />
+            <End Role="price" EntitySet="price" />
+          </AssociationSet>
+          <AssociationSet Name="FK_products_goodstype" Association="CheapProductsModel.FK_products_goodstype">
+            <End Role="goodstype" EntitySet="goodstype" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_price_products" Association="CheapProductsModel.FK_price_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="price" EntitySet="price" />
+          </AssociationSet>
+          <AssociationSet Name="FK_price_store" Association="CheapProductsModel.FK_price_store">
+            <End Role="store" EntitySet="store" />
+            <End Role="price" EntitySet="price" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="area">
+          <Key>
+            <PropertyRef Name="area_id" />
+          </Key>
+          <Property Name="area_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="area_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="price" Relationship="CheapProductsModel.FK_price_area" FromRole="area" ToRole="price" />
+        </EntityType>
+        <EntityType Name="goodstype">
+          <Key>
+            <PropertyRef Name="goods_type" />
+          </Key>
+          <Property Name="goods_type" Type="Int32" Nullable="false" />
+          <Property Name="type_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="products" Relationship="CheapProductsModel.FK_products_goodstype" FromRole="goodstype" ToRole="products" />
+        </EntityType>
+        <EntityType Name="levels">
+          <Key>
+            <PropertyRef Name="level_type" />
+          </Key>
+          <Property Name="level_type" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="level_name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="price">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="barcode" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="price1" Type="Double" />
+          <Property Name="update_date" Type="DateTime" Precision="3" />
+          <Property Name="store_id" Type="Int32" />
+          <Property Name="area_id" Type="Int32" />
+          <Property Name="verify" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="user_id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="area" Relationship="CheapProductsModel.FK_price_area" FromRole="price" ToRole="area" />
+          <NavigationProperty Name="products" Relationship="CheapProductsModel.FK_price_products" FromRole="price" ToRole="products" />
+          <NavigationProperty Name="store" Relationship="CheapProductsModel.FK_price_store" FromRole="price" ToRole="store" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="barcode" />
+          </Key>
+          <Property Name="barcode" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="goods_name" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="goods_img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="goods_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="favorite" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="goods_type" Type="Int32" />
+          <NavigationProperty Name="goodstype" Relationship="CheapProductsModel.FK_products_goodstype" FromRole="products" ToRole="goodstype" />
+          <NavigationProperty Name="price" Relationship="CheapProductsModel.FK_price_products" FromRole="products" ToRole="price" />
+        </EntityType>
+        <EntityType Name="store">
+          <Key>
+            <PropertyRef Name="store_id" />
+          </Key>
+          <Property Name="store_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="store_name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="price" Relationship="CheapProductsModel.FK_price_store" FromRole="store" ToRole="price" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone_no" Type="Int32" />
+          <Property Name="level_type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="verify" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_price_area">
+          <End Type="CheapProductsModel.area" Role="area" Multiplicity="0..1" />
+          <End Type="CheapProductsModel.price" Role="price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="area">
+              <PropertyRef Name="area_id" />
+            </Principal>
+            <Dependent Role="price">
+              <PropertyRef Name="area_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_products_goodstype">
+          <End Type="CheapProductsModel.goodstype" Role="goodstype" Multiplicity="0..1" />
+          <End Type="CheapProductsModel.products" Role="products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goodstype">
+              <PropertyRef Name="goods_type" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="goods_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_price_products">
+          <End Type="CheapProductsModel.products" Role="products" Multiplicity="1" />
+          <End Type="CheapProductsModel.price" Role="price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="barcode" />
+            </Principal>
+            <Dependent Role="price">
+              <PropertyRef Name="barcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_price_store">
+          <End Type="CheapProductsModel.store" Role="store" Multiplicity="0..1" />
+          <End Type="CheapProductsModel.price" Role="price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="store">
+              <PropertyRef Name="store_id" />
+            </Principal>
+            <Dependent Role="price">
+              <PropertyRef Name="store_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CheapProductsModelStoreContainer" CdmEntityContainer="CheapProductsEntities">
+          <EntitySetMapping Name="area">
+            <EntityTypeMapping TypeName="CheapProductsModel.area">
+              <MappingFragment StoreEntitySet="area">
+                <ScalarProperty Name="area_name" ColumnName="area_name" />
+                <ScalarProperty Name="area_id" ColumnName="area_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="goodstype">
+            <EntityTypeMapping TypeName="CheapProductsModel.goodstype">
+              <MappingFragment StoreEntitySet="goodstype">
+                <ScalarProperty Name="type_name" ColumnName="type_name" />
+                <ScalarProperty Name="goods_type" ColumnName="goods_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="levels">
+            <EntityTypeMapping TypeName="CheapProductsModel.levels">
+              <MappingFragment StoreEntitySet="levels">
+                <ScalarProperty Name="level_name" ColumnName="level_name" />
+                <ScalarProperty Name="level_type" ColumnName="level_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="price">
+            <EntityTypeMapping TypeName="CheapProductsModel.price">
+              <MappingFragment StoreEntitySet="price">
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="verify" ColumnName="verify" />
+                <ScalarProperty Name="area_id" ColumnName="area_id" />
+                <ScalarProperty Name="store_id" ColumnName="store_id" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="price1" ColumnName="price" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="CheapProductsModel.products">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="goods_type" ColumnName="goods_type" />
+                <ScalarProperty Name="favorite" ColumnName="favorite" />
+                <ScalarProperty Name="goods_description" ColumnName="goods_description" />
+                <ScalarProperty Name="goods_img" ColumnName="goods_img" />
+                <ScalarProperty Name="goods_name" ColumnName="goods_name" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="store">
+            <EntityTypeMapping TypeName="CheapProductsModel.store">
+              <MappingFragment StoreEntitySet="store">
+                <ScalarProperty Name="store_name" ColumnName="store_name" />
+                <ScalarProperty Name="store_id" ColumnName="store_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="CheapProductsModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="verify" ColumnName="verify" />
+                <ScalarProperty Name="level_type" ColumnName="level_type" />
+                <ScalarProperty Name="phone_no" ColumnName="phone_no" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

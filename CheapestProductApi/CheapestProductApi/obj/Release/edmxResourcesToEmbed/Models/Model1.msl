@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CheapProductsModelStoreContainer" CdmEntityContainer="CheapProductsEntities">
+    <EntitySetMapping Name="area">
+      <EntityTypeMapping TypeName="CheapProductsModel.area">
+        <MappingFragment StoreEntitySet="area">
+          <ScalarProperty Name="area_name" ColumnName="area_name" />
+          <ScalarProperty Name="area_id" ColumnName="area_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="goodstype">
+      <EntityTypeMapping TypeName="CheapProductsModel.goodstype">
+        <MappingFragment StoreEntitySet="goodstype">
+          <ScalarProperty Name="type_name" ColumnName="type_name" />
+          <ScalarProperty Name="goods_type" ColumnName="goods_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="levels">
+      <EntityTypeMapping TypeName="CheapProductsModel.levels">
+        <MappingFragment StoreEntitySet="levels">
+          <ScalarProperty Name="level_name" ColumnName="level_name" />
+          <ScalarProperty Name="level_type" ColumnName="level_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="price">
+      <EntityTypeMapping TypeName="CheapProductsModel.price">
+        <MappingFragment StoreEntitySet="price">
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="verify" ColumnName="verify" />
+          <ScalarProperty Name="area_id" ColumnName="area_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="price1" ColumnName="price" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="CheapProductsModel.products">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="goods_type" ColumnName="goods_type" />
+          <ScalarProperty Name="favorite" ColumnName="favorite" />
+          <ScalarProperty Name="goods_description" ColumnName="goods_description" />
+          <ScalarProperty Name="goods_img" ColumnName="goods_img" />
+          <ScalarProperty Name="goods_name" ColumnName="goods_name" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="store">
+      <EntityTypeMapping TypeName="CheapProductsModel.store">
+        <MappingFragment StoreEntitySet="store">
+          <ScalarProperty Name="store_name" ColumnName="store_name" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="CheapProductsModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="verify" ColumnName="verify" />
+          <ScalarProperty Name="level_type" ColumnName="level_type" />
+          <ScalarProperty Name="phone_no" ColumnName="phone_no" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

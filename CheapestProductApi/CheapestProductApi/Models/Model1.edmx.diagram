@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="13a6bb556508410f89aa4801484fa1ac" Name="Diagram1">
+        <EntityTypeShape EntityType="CheapProductsModel.area" Width="1.5" PointX="3" PointY="4.875" />
+        <EntityTypeShape EntityType="CheapProductsModel.goodstype" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="CheapProductsModel.levels" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="CheapProductsModel.price" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="CheapProductsModel.products" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="CheapProductsModel.store" Width="1.5" PointX="3" PointY="7.25" />
+        <EntityTypeShape EntityType="CheapProductsModel.users" Width="1.5" PointX="7.75" PointY="0.75" />
+        <AssociationConnector Association="CheapProductsModel.FK_price_area" />
+        <AssociationConnector Association="CheapProductsModel.FK_products_goodstype" />
+        <AssociationConnector Association="CheapProductsModel.FK_price_products" />
+        <AssociationConnector Association="CheapProductsModel.FK_price_store" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

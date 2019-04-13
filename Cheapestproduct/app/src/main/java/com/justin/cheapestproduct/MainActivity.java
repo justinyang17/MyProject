@@ -101,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
                 integrator.setCaptureActivity(CaptureActivityAnyOrientation.class);
-                integrator.setDesiredBarcodeFormats(IntentIntegrator.PRODUCT_CODE_TYPES);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES);
+                //integrator.setDesiredBarcodeFormats(IntentIntegrator.PRODUCT_CODE_TYPES); //EAN/JAN-13
                 integrator.setPrompt("請將商品條碼置於掃描框內");
                 integrator.setCameraId(0);
                 integrator.setOrientationLocked(false);
